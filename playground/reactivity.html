@@ -7,24 +7,49 @@
     <title>Document</title>
 </head>
 <body>
+
+
+
     <div id="app"></div>
     <script>
-        var div = document.querySelector('#app');
-        var view = {};
+                        var div = document.querySelector('#app');
+                var view = {};
+        (
+            function(){
+
+
+                function init(){
+                    Object.defineProperty(view,'str',{
+                    get: function(){
+                        console.log('접근')
+                    },
+                    set: function(newValue){
+                        console.log('할당',newValue)
+                        render(newValue)
+                    }
+                })
+                }
+
+                function render(newValue){
+                    div.innerHTML = newValue
+                }
+
+                init();
+            }
+        )();
+
+
+       
+
+
+
+
 
         // Object.defineProperty(대상객체 , 객체의 속성 {
 
         // })
 
-        Object.defineProperty(view,'str',{
-            get: function(){
-                console.log('접근')
-            },
-            set: function(newValue){
-                console.log('할당',newValue)
-                div.innerHTML = newValue
-            }
-        })
+
     </script>
 </body>
 </html>
