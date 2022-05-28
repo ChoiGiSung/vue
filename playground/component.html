@@ -9,29 +9,24 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <div id="app">
-
-
+        <app-header></app-header>
+        <app-footer></app-footer>
     </div>
 
-
     <script>
-        var options = {
-            el: '#app',
-            data:{
-                message: 'hi',
-                method: {
-
-                },
-            }
-        }
-
-
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                message: 'hi'
-            }
+        Vue.component('app-header',{
+            template: '<h1>Header</h1>'
         })
+
+        Vue.component('app-footer',{
+            template: '<p>footer</p>'
+        })
+
+
+        new Vue({
+            el: '#app'
+        });
     </script>
+    
 </body>
 </html>
