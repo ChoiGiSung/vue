@@ -14,17 +14,24 @@
     </div>
 
     <script>
-        Vue.component('app-header',{
-            template: '<h1>Header</h1>'
-        })
+        // 전역 컴포넌트
 
-        Vue.component('app-footer',{
-            template: '<p>footer</p>'
-        })
+        // Vue.component('app-header',{
+        //     template: '<h1>Header</h1>'
+        // })
 
+        // Vue.component('app-footer',{
+        //     template: '<p>footer</p>'
+        // })
 
+        // 지역 컴포넌트
         new Vue({
-            el: '#app'
+            el: '#app',
+            components:{
+                'app-header' : {
+                    template: '<footer>footer</footer>'
+                }
+            }
         });
     </script>
     

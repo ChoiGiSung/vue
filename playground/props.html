@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <app-header v-bind:propsdata="message"></app-header>
+        <app-content v-bind:propsnum="num"></app-content>
+    </div>
+
+    <script>
+
+        var appHeader = {
+            template: '<h1>header {{propsdata}}</h1>',
+            props:['propsdata']
+        }
+
+        var appContent = {
+            template: '<div>{{propsnum}}</div>',
+            props:['propsnum']
+        }
+
+        new Vue({
+            el: '#app',
+            components:{
+                'app-header' :appHeader,
+                'app-content': appContent
+            },
+            data:{
+                message: 'ss',
+                num : 10
+            }
+        });
+    </script>
+<!--props를 통해 하위 컴포넌트에 값을 보낸다-->
+    
+</body>
+</html>
