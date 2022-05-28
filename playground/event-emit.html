@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <div id="app">
+        <p>{{num}}</p>
+        <app-header v-on:pass="logText"></app-header>
+        <app-content v-on:add="addNum"></app-content>
+    </div>
+
+
+    <script>
+    var appHeader = {
+        template: '<button v-on:click="passEvent">click</button>',
+        methods:{
+            passEvent: function(){
+                this.$emit('pass');
+            }
+        }
+    }
+
+    var appContent = {
+        template: '<button v-on:click="addEvent">더하기</button>',
+        methods:{
+            addEvent: function(){
+                this.$emit('add')
+            }
+        }
+    }
+
+    var div = document.querySelector('#app');
+
+    new Vue({   
+            el:'#app',
+            components:{
+                'app-header' : appHeader,
+                'app-content':appContent
+            },
+            methods:{
+                logText: function(){
+                    console.log('his')
+                },
+                addNum:function(){
+                    this.num = this.num+1
+                    console.log(this.num)
+                    div.innerHTML = this.num+1
+                }
+            },
+            data:{
+                num:10
+            }
+        })
+    </script>
+</body>
+</html>
