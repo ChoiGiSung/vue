@@ -9,11 +9,8 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <div id="app">
-        <button v-on:click="logText">
-            click
-        </button>
-        <input type="text" v-on:keyup="logText">
-        <input type="text" v-on:keyup.enter="logText">
+        {{num}}
+        <button v-on:click="addNum">더하기</button>
     </div>
 
 
@@ -21,7 +18,21 @@
     <script>
         new Vue({
             el:'#app',
+            data:{
+                num : 10
+            }
+            ,
+            watch:{
+                num:function(){
+                    this.logText()
+                }
+            }
+            ,
             methods:{
+                addNum:function(){
+                    this.num  += 1
+                }
+                ,
                 logText:function(){
                     console.log('text')
                 }
