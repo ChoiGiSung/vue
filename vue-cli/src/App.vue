@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+  <!-- v:bind: 프롭스 속성 이름 = "상위 컴포넌트의 데이터 이름 "-->
+    <app-header 
+    v-on:renew="renewStr"
+     v-bind:propsdata="str"></app-header>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import AppHeader from './components/AppHeader.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+
+  export default {
+  components: { AppHeader },
+    data:function(){
+      return{
+        str: 'hi'
+      }
+    },
+    Comments:{
+      'app-header' : AppHeader
+    },
+    methods:{
+      renewStr:function(){
+        this.str = 'header'
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+
 </style>
